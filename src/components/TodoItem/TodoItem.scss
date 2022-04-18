@@ -1,0 +1,14 @@
+.todo-item {
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+
+    input {
+      margin-right: 10px;
+    }
+  }
+
+  .todo-completed {
+    text-decoration: line-through;
+  }
+}
