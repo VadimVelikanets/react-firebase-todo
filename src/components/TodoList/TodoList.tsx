@@ -3,9 +3,9 @@ import { useDispatch } from 'react-redux'
 import { useAppSelector} from "../../hooks";
 import {fetchTodo} from "../../store/action-creators/todo";
 import TodoItem from "../TodoItem/TodoItem";
-import {useCollectionData} from "react-firebase-hooks/firestore";
-import {firestore} from "../../config/firebaseSetup";
-import firebase from "firebase/compat/app";
+import Loader from "../Loader/Loader";
+import { Card, Col, Row } from 'antd';
+
 const TodoList : React.FC = () => {
     const dispatch = useDispatch()
     const todo = useAppSelector((state) => state.todo)
@@ -14,18 +14,19 @@ const TodoList : React.FC = () => {
         dispatch(fetchTodo(user?.user?.uid))
     },[])
 
-    return (
-        <div>
-            <div>
-                {todo?.isLoading && (
-                    <div>Loading...</div>
-                )}
-            </div>
+    if(todo?.isLoading)  return (<Loader/>)
 
-            {todo?.todos?.length ? todo.todos.map((item,index) => <TodoItem key={index} item={item}/>) :
-                (<h3>No todo</h3>)
-            }
-        </div>
+    return (
+        <>
+            <div className="site-card-wrapper">
+                <Row gutter={16}>
+                    {todo?.todos?.length ? todo.todos.map((item,index) => <TodoItem key={index} item={item}/>) :
+                        (<h3>No todo</h3>)
+                    }
+                </Row>
+            </div>
+        </>
+
     );
 };
 

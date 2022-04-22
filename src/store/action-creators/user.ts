@@ -1,6 +1,6 @@
 import {Dispatch} from "redux";
-import {todoActions} from "../../types/todo";
-import {UserAction, userActions} from "../../types/user";
+import {todoActions} from "../types/todo";
+import {UserAction, userActions} from "../types/user";
 import {auth, provider} from "../../config/firebaseSetup";
 
 

@@ -2,13 +2,15 @@
   &__inner {
     display: flex;
     justify-content: space-between;
-
-    input {
-      margin-right: 10px;
-    }
   }
 
   .todo-completed {
-    text-decoration: line-through;
+    .ant-card-head-title {
+      text-decoration: line-through;
+    }
+  }
+
+  .completed-text {
+    margin-left: 15px;
   }
 }

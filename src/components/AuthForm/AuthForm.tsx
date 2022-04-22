@@ -1,8 +1,11 @@
 import React, {useState} from 'react';
-
-import { auth,provider } from "../../config/firebaseSetup"
+import './AuthForm.scss';
 import {useDispatch} from "react-redux";
 import {fetchUser} from "../../store/action-creators/user";
+import {Button} from "antd";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGoogle } from '@fortawesome/free-brands-svg-icons'
+
 
 const AuthForm = () => {
 
@@ -12,8 +15,11 @@ const AuthForm = () => {
     }
 
     return (
-        <div>
-            <button onClick={signIn}>Login with google</button>
+        <div className="auth-form">
+            <Button type="primary" onClick={signIn}>
+                <span>Login with &nbsp;</span>
+                <FontAwesomeIcon icon={faGoogle}/>
+            </Button>
         </div>
     );
 };

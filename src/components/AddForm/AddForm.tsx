@@ -5,7 +5,8 @@ import {addTodo} from "../../store/action-creators/todo";
 import {firestore} from "../../config/firebaseSetup";
 import {useAppSelector} from "../../hooks";
 import firebase from "firebase/compat/app";
-import {iTodos} from "../../types/todo";
+import {iTodos} from "../../store/types/todo";
+import {Form, Input, Button} from "antd";
 
 const AddForm = () => {
     const dispatch = useDispatch();
@@ -27,10 +28,20 @@ const AddForm = () => {
     }
 
     return (
-        <div className="add-form">
-            <input value={title} onChange={event => setTitle(event.target.value)} type="text"/>
-            <button onClick={addTodoHandler}>Add</button>
-        </div>
+        <>
+            <Form className="add-form" layout="vertical" onFinish={addTodoHandler}>
+                <Form.Item
+                    name="title"
+                    rules={[{ required: true }, { type: 'string', min: 1 }]}
+                >
+                    <Input placeholder="Todo title" value={title} onChange={event => setTitle(event.target.value)} type="text" />
+                </Form.Item>
+                <Button type="primary" htmlType="submit">
+                    Add
+                </Button>
+            </Form>
+        </>
+
     );
 };
 

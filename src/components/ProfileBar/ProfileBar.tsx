@@ -2,6 +2,9 @@ import React, {useEffect} from 'react';
 import {useAppSelector} from "../../hooks";
 import {useDispatch} from "react-redux";
 import {logoutUser} from "../../store/action-creators/user";
+import './ProfileBar.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 
 const ProfileBar = () => {
     const user = useAppSelector(state => state.user)
@@ -24,13 +27,19 @@ const ProfileBar = () => {
         dispatch(logoutUser())
     }
 
-    return (
-        <div>
-            <b>{userData.displayName}</b>
-            <img src={userData.photoURL} alt=""/>
-            <a href="#" onClick={logoutHandler}>Logout</a>
+     return (
+        <div className="profile-bar">
+            <img className="profile-bar__image" src={userData.photoURL} alt=""/>
+            <b className="profile-bar__name">{userData.displayName}</b>
+
+            <a className="profile-bar__logout" href="#" onClick={logoutHandler}>
+                <span>
+                    Logout
+                </span>
+                <FontAwesomeIcon icon={faArrowRightFromBracket} />
+            </a>
         </div>
-    );
+    )
 };
 
 export default ProfileBar;

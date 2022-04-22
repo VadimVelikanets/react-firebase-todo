@@ -1,8 +1,8 @@
-import { todoActions} from "../../types/todo";
+import { todoActions} from "../types/todo";
 import {Dispatch} from "redux";
-import {TodoAction} from "../../types/todo"
+import {TodoAction} from "../types/todo"
 import {firestore} from "../../config/firebaseSetup";
-import {completedData} from "../../types/todo";
+import {completedData} from "../types/todo";
 
 export const fetchTodo = (uid: string | undefined) => {
     return async (dispatch: Dispatch<TodoAction>) => {
