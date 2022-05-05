@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useTransition} from 'react';
 import './TodoItem.scss';
 import {useDispatch} from "react-redux";
 import {completedTodo, deleteTodo} from "../../store/action-creators/todo";
 import {Card, Col, Switch, Button} from "antd";
+import {useTranslation} from "react-i18next";
 
 interface iTodoItem {
     item: any
@@ -10,7 +11,8 @@ interface iTodoItem {
 
 
 const TodoItem : React.FC<iTodoItem> = ({item} ) => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const {t} = useTranslation()
     const deleteTodoHander = () => {
         dispatch(deleteTodo(item.id))
     }
@@ -30,10 +32,10 @@ const TodoItem : React.FC<iTodoItem> = ({item} ) => {
                     <div className="todo-item__inner">
                         <div>
                             <Switch defaultChecked={item.completed} id={item.id}  onChange={completedTodoHander}></Switch>
-                            <b  className="completed-text">completed</b>
+                            <b  className="completed-text"> {t('completedTodo')}</b>
                         </div>
                         <Button onClick={deleteTodoHander} type="primary" danger>
-                            Remove
+                            {t('RemoveTodoBtn')}
                         </Button>
                     </div>
                 </Card>

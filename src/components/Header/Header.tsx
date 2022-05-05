@@ -2,12 +2,14 @@ import React from 'react';
 import {Layout} from "antd";
 import './Header.scss';
 import ProfileBar from "../ProfileBar/ProfileBar";
-import {inflate} from "zlib";
 import firebase from "firebase/compat/app";
+
+import LanguageSelect from "../LanguageSelect/LanguageSelect";
 
 interface iUser {
     user: firebase.User | null | undefined
 }
+
 const Header: React.FC<iUser> = ({user}) => {
 
     return (
@@ -18,7 +20,11 @@ const Header: React.FC<iUser> = ({user}) => {
                         <div className="header-title">
                             ToDo
                         </div>
-                        {user &&  <ProfileBar/>}
+                        <div className="header-right-wrapper">
+                            {user &&  <ProfileBar/>}
+                            <LanguageSelect/>
+                        </div>
+
                     </div>
 
                 </div>

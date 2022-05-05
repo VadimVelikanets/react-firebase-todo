@@ -5,10 +5,12 @@ import {logoutUser} from "../../store/action-creators/user";
 import './ProfileBar.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+import {useTranslation} from "react-i18next";
 
 const ProfileBar = () => {
     const user = useAppSelector(state => state.user)
     const dispatch = useDispatch()
+    const {t} = useTranslation()
     interface iUser {
         uid: number,
         email: string,
@@ -34,7 +36,7 @@ const ProfileBar = () => {
 
             <a className="profile-bar__logout" href="#" onClick={logoutHandler}>
                 <span>
-                    Logout
+                    {t('logoutBtb')}
                 </span>
                 <FontAwesomeIcon icon={faArrowRightFromBracket} />
             </a>

@@ -1,0 +1,10 @@
+{
+  "common": {
+    "loginText": "Войти через",
+    "logoutBtb": "Выйти",
+    "todoTitle": "Название задачи",
+    "AddTodoBtn": "Добавить",
+    "RemoveTodoBtn": "Удавить",
+    "completedTodo": "выполнено"
+  }
+}

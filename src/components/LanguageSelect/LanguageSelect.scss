@@ -1,0 +1,21 @@
+.language-select {
+  position: relative;
+  margin-left: 30px;
+  &__icon {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    path {
+      fill: #000000;
+    }
+  }
+
+  .ant-select-selector {
+    * {
+      text-transform: uppercase;
+      color: #000000;
+    }
+  }
+}

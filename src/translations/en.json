@@ -1,0 +1,10 @@
+{
+  "common": {
+    "loginText": "Login with",
+    "logoutBtb": "Logout",
+    "todoTitle": "Todo title",
+    "AddTodoBtn": "Add",
+    "RemoveTodoBtn": "Remove",
+    "completedTodo": "completed"
+  }
+}

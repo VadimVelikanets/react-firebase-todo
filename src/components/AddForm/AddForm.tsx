@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useTransition} from 'react';
 import './AddForm.scss'
 import {useDispatch} from "react-redux";
 import {addTodo} from "../../store/action-creators/todo";
@@ -7,9 +7,11 @@ import {useAppSelector} from "../../hooks";
 import firebase from "firebase/compat/app";
 import {iTodos} from "../../store/types/todo";
 import {Form, Input, Button} from "antd";
+import {useTranslation} from "react-i18next";
 
 const AddForm = () => {
     const dispatch = useDispatch();
+    const {t} = useTranslation()
     const user = useAppSelector(state => state.user);
     const [title, setTitle] = React.useState<string>('');
     const addTodoHandler =  () => {
@@ -34,10 +36,10 @@ const AddForm = () => {
                     name="title"
                     rules={[{ required: true }, { type: 'string', min: 1 }]}
                 >
-                    <Input placeholder="Todo title" value={title} onChange={event => setTitle(event.target.value)} type="text" />
+                    <Input placeholder={t('todoTitle')} value={title} onChange={event => setTitle(event.target.value)} type="text" />
                 </Form.Item>
                 <Button type="primary" htmlType="submit">
-                    Add
+                    {t('AddTodoBtn')}
                 </Button>
             </Form>
         </>
