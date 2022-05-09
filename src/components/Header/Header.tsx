@@ -1,14 +1,11 @@
 import React from 'react';
 import {Layout} from "antd";
+import {Link} from "react-router-dom";
 import './Header.scss';
 import ProfileBar from "../ProfileBar/ProfileBar";
-import firebase from "firebase/compat/app";
-
+import {iUser} from "./types";
 import LanguageSelect from "../LanguageSelect/LanguageSelect";
 
-interface iUser {
-    user: firebase.User | null | undefined
-}
 
 const Header: React.FC<iUser> = ({user}) => {
 
@@ -18,7 +15,7 @@ const Header: React.FC<iUser> = ({user}) => {
                 <div className="container">
                     <div className="header-wrapper">
                         <div className="header-title">
-                            ToDo
+                            <Link to="/">ToDo</Link>
                         </div>
                         <div className="header-right-wrapper">
                             {user &&  <ProfileBar/>}

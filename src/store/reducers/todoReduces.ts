@@ -24,9 +24,18 @@ export const todoReducer = (state=initialState, action: TodoAction) : TodoState 
                 }
             })
             return {...state, todos: newTodos}
+        case todoActions.EDIT_TODO:
+            const updateTodos = [...state.todos]
+            updateTodos.forEach(item => {
+                if(item.id === action.payload.id){
+                    item.completed = action.payload.completed
+                    item.title = action.payload.title
+                }
+            })
+            return {...state, todos: updateTodos}
         case todoActions.ADD_TODO:
-            const newTodo = {id: state.todos.length+ 1, completed: false, title: action.payload, userId: 1}
-            return {...state, todos: [...state.todos, newTodo]}
+            const newTodo = {id: action.payload.id, completed: false, title: action.payload.title, userId: 1}
+            return {...state, todos: [ newTodo, ...state.todos]}
         default:
             return state
     }

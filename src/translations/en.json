@@ -4,7 +4,10 @@
     "logoutBtb": "Logout",
     "todoTitle": "Todo title",
     "AddTodoBtn": "Add",
+    "SaveTodoBtn": "Save",
     "RemoveTodoBtn": "Remove",
-    "completedTodo": "completed"
+    "completedTodo": "completed",
+    "editTodo": "Edit todo",
+    "deleteTodo": "Delete todo?"
   }
 }

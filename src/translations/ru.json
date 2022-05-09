@@ -4,7 +4,10 @@
     "logoutBtb": "Выйти",
     "todoTitle": "Название задачи",
     "AddTodoBtn": "Добавить",
+    "SaveTodoBtn": "Сохранить",
     "RemoveTodoBtn": "Удавить",
-    "completedTodo": "выполнено"
+    "completedTodo": "выполнено",
+    "editTodo": "Редактировать задание",
+    "deleteTodo": "Удалить задание?"
   }
 }

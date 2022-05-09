@@ -1,4 +1,13 @@
 .todo-item {
+  position: relative;
+
+  &__edit {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    z-index: 1;
+  }
+
   &__inner {
     display: flex;
     justify-content: space-between;

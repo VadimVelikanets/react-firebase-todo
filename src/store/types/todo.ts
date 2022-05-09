@@ -10,7 +10,8 @@ export enum todoActions {
     FETCH_ERROR_TODOS = "FETCH_ERROR_TODOS",
     DELETE_TODO = "DELETE_TODO",
     COMPLETED_TODO = "COMPLETED_TODO",
-    ADD_TODO = "ADD_TODO"
+    ADD_TODO = "ADD_TODO",
+    EDIT_TODO = "EDIT_TODO",
 }
 
 export interface fetchTodosAction  {
@@ -37,9 +38,24 @@ export interface completedTodoAction  {
     payload: completedData
 }
 
+export interface addTodoData {
+    id: string,
+    title: string
+}
 export interface addTodoAction {
     type: todoActions.ADD_TODO,
-    payload: string
+    payload: addTodoData
+}
+
+export interface editTodoData {
+    id: string,
+    completed: boolean,
+    title: string
+}
+
+export interface editTodoAction {
+    type: todoActions.EDIT_TODO,
+    payload: editTodoData
 }
 
 export interface completedData {
@@ -54,4 +70,4 @@ export interface iTodos {
     createdAt: any
 }
 
-export type TodoAction = fetchTodosAction | fetchTodosSuccessAction | fetchTodosErrorAction | deleteTodoAction | completedTodoAction | addTodoAction
+export type TodoAction = fetchTodosAction | fetchTodosSuccessAction | fetchTodosErrorAction | deleteTodoAction | completedTodoAction | addTodoAction | editTodoAction

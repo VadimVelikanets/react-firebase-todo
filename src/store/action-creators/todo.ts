@@ -1,4 +1,4 @@
-import { todoActions} from "../types/todo";
+import {addTodoData, editTodoData, todoActions} from "../types/todo";
 import {Dispatch} from "redux";
 import {TodoAction} from "../types/todo"
 import {firestore} from "../../config/firebaseSetup";
@@ -19,6 +19,19 @@ export const fetchTodo = (uid: string | undefined) => {
         catch (e){
             dispatch({type: todoActions.FETCH_ERROR_TODOS, payload : "Todos doesn't load"})
         }
+    }
+}
+
+export const fetchTodoById = async (todoId: string | undefined) => {
+    try {
+        const response= await firestore.collection('todos').doc(todoId).get()
+            .then(snapshot => snapshot.data());
+        const data = response
+        return data
+
+    }
+    catch (e){
+        console.error(e)
     }
 }
 
@@ -50,9 +63,25 @@ export const completedTodo = (data : completedData) => {
     }
 }
 
-export const addTodo = (title: string) => {
-    return {
-        type: todoActions.ADD_TODO,
-        payload: title
+export const editTodo = (data : editTodoData) => {
+
+    return async (dispatch: Dispatch<TodoAction>) => {
+        try {
+            const response =  firestore.collection('todos').doc(data?.id);
+            await  response.update({completed: data.completed, title: data.title})
+            dispatch(({type: todoActions.EDIT_TODO, payload: data}))
+        }
+        catch (e){
+            dispatch({type: todoActions.FETCH_ERROR_TODOS, payload : "Todos doesn't load"})
+        }
     }
 }
+
+export const addTodo = ({id, title}: addTodoData) => {
+    return {
+        type: todoActions.ADD_TODO,
+        payload: {id, title}
+    }
+}
+
+
