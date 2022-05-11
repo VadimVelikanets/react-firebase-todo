@@ -34,9 +34,7 @@ const App = () => {
                     </div>
                 </Layout.Content>
             </Layout>
-
         </>
-
     );
 };
 

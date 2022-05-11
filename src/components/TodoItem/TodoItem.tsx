@@ -14,7 +14,9 @@ const TodoItem : React.FC<iTodoItem> = ({item} ) => {
     const dispatch = useDispatch();
     const {t} = useTranslation()
     const deleteTodoHander = () => {
-        dispatch(deleteTodo(item.id))
+        if(window.confirm(t('deleteTodo'))){
+            dispatch(deleteTodo(item.id))
+        }
     }
 
     const completedTodoHander = () => {
@@ -27,7 +29,7 @@ const TodoItem : React.FC<iTodoItem> = ({item} ) => {
 
     return (
         <>
-            <Col span={8} className="todo-item">
+            <Col lg={{span: 8}} md={{span: 24}}  sm={{span: 24}}  className="todo-item">
                 <Link to={`/edit/${item.id}`} className="todo-item__edit">
                     <FontAwesomeIcon icon={faPenToSquare}/>
                 </Link>

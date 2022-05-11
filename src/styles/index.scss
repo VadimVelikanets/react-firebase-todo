@@ -14,7 +14,11 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
-  flex: 1
+  flex: 1;
+
+  @media (max-width: 767px) {
+    padding: 0 16px;
+  }
 }
 
 .ant-layout-content {

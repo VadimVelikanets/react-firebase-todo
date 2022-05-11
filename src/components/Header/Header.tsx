@@ -21,9 +21,7 @@ const Header: React.FC<iUser> = ({user}) => {
                             {user &&  <ProfileBar/>}
                             <LanguageSelect/>
                         </div>
-
                     </div>
-
                 </div>
             </Layout.Header>
         </>

@@ -1,5 +1,6 @@
 .todo-item {
   position: relative;
+  margin-bottom: 24px;
 
   &__edit {
     position: absolute;
@@ -11,6 +12,7 @@
   &__inner {
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 
   .todo-completed {
@@ -21,5 +23,9 @@
 
   .completed-text {
     margin-left: 15px;
+  }
+
+  .ant-btn-dangerous {
+    margin-left: 16px;
   }
 }
